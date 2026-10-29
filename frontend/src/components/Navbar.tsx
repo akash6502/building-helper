@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useApp } from "../context/AppContext";
+import { VisitorCounter } from "./VisitorCounter";
 import {
   Sparkles,
   PhoneCall,
@@ -32,6 +33,8 @@ export function Navbar() {
           </span>
         </div>
         <div className="flex items-center space-x-4">
+          <VisitorCounter variant="compact" />
+          <span className="text-slate-600">•</span>
           <a
             href={`tel:${brandConfig.supportPhone}`}
             className="flex items-center gap-1.5 hover:text-white text-emerald-400 font-bold transition-colors"
