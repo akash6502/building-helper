@@ -497,7 +497,7 @@ export function ServiceInquiryForm({
                     <input
                       type="tel"
                       required
-                      placeholder="+91 98111 22334"
+                      placeholder="+91 80857 07987"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:ring-2 focus:ring-amber-500"

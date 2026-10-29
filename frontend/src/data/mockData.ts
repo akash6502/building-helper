@@ -45,16 +45,16 @@ export const initialBrandConfig: BrandConfig = {
   heroDescription:
     "Looking for verified finishing teams for Plastering, Wall Putty, Painting, Plumbing, or Electrical works? Place your enquiry below — our engineering team will call you to discuss your exact requirement and schedule a free site inspection.",
   trademarkText: "© 2026 Building Helper Technologies. All rights reserved.",
-  supportPhone: "+91 98111 22334",
+  supportPhone: "+91 80857 07987",
   supportEmail: "support@buildinghelper.in",
-  supportWhatsapp: "+919811122334",
+  supportWhatsapp: "+918085707987",
   branches: [
     {
       id: "b-1",
       name: "Central Engineering & Operations Hub",
       address: "Plot 44, Udyog Vihar Phase IV, Sector 18",
       city: "Gurugram, Haryana",
-      phone: "+91 98111 22334",
+      phone: "+91 80857 07987",
       isPrimary: true,
     },
     {

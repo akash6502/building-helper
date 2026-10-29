@@ -32,10 +32,10 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   // Brand Config
   const [brandConfig, setBrandConfig] = useState<BrandConfig>(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("building_helper_brand_config");
+      const saved = localStorage.getItem("building_helper_brand_config_v2");
       if (saved) {
         try {
-          return JSON.parse(saved);
+          return { ...initialBrandConfig, ...JSON.parse(saved) };
         } catch (e) {
           console.error("Failed to parse saved brand config", e);
         }
@@ -49,7 +49,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       const updated = { ...prev, ...newConfig };
       if (typeof window !== "undefined") {
         localStorage.setItem(
-          "building_helper_brand_config",
+          "building_helper_brand_config_v2",
           JSON.stringify(updated)
         );
       }
