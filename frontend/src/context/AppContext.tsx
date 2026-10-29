@@ -99,6 +99,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       createdAt: "Just now",
     };
 
+    // 1. Save locally for instant UI update
     setServiceInquiries((prev) => {
       const updated = [newInquiry, ...prev];
       if (typeof window !== "undefined") {
@@ -113,6 +114,32 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setNotification(
       `Enquiry #${newInquiry.inquiryNumber} received! Our team will call you within 24 hours.`
     );
+
+    // 2. Forward to Next.js API route (/api/enquiry) and Google Sheet
+    try {
+      fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newInquiry),
+      }).catch((err) => {
+        console.warn("API route forwarding error:", err);
+      });
+
+      // Also support direct client-side Webhook if configured
+      const directWebhook = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
+      if (directWebhook) {
+        fetch(directWebhook, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newInquiry),
+        }).catch((err) => {
+          console.warn("Direct webhook forwarding error:", err);
+        });
+      }
+    } catch (e) {
+      console.error("Failed to forward enquiry to webhook:", e);
+    }
 
     return newInquiry;
   };
